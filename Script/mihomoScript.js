@@ -1,5 +1,5 @@
 /**
- * mihomo配置覆写脚本（全量版）
+ * mihomo配置覆写脚本（全量版）FANZA修复
  * 作者：AIsouler
  * 源仓库：https://github.com/AIsouler/MyClash
  * 脚本链接：https://raw.githubusercontent.com/AIsouler/MyClash/main/Script/mihomoScript.js
@@ -42,6 +42,7 @@ const ruleOptionsEnable = {
   Crypto: true, // 加密货币相关服务
   PayPal: true, // PayPal支付服务
   Patreon: true, // Patreon创作者赞助平台
+  FANZA: true, // FANZA / DMM及相关服务
   EHentai: true, // E-Hentai网站
   AdBlock: true, // 广告拦截
 
@@ -97,7 +98,8 @@ const prefixRules = [
 //     },
 //   },
 // ];
-const customizeProxies = [];
+const customizeProxies = [
+
 
 // 链式代理启用时，自定义节点的 dialer-proxy 引用目标
 const dialerProxyName = '链式中转';
@@ -389,6 +391,23 @@ const serviceConfigs = [
     icon: `${iconBaseUrl}Fcm.svg`,
     rules: ['RULE-SET,googlefcm,FCM'],
   },
+  {
+  name: 'FANZA',
+  baseOption: selectBaseOption,
+  defaultSelected: '手动选择',
+  providers: {
+    fanza: {
+      type: 'http',
+      behavior: 'classical',
+      interval: 86400,
+      format: 'yaml',
+      url: 'https://raw.githubusercontent.com/Adagaki-Aki/my-website/main/FANZA2.yaml',
+      path: './ruleset/FANZA2.yaml',
+    },
+  },
+  icon: 'https://raw.githubusercontent.com/Adagaki-Aki/my-website/main/FANZA_logo.svg.png',
+  rules: ['RULE-SET,fanza,FANZA'],
+},
   {
     name: 'YouTube',
     baseOption: selectBaseOption,
